@@ -13,9 +13,13 @@ import com.hafidh.utshafidhsyahputra.fragment.ProfileFragment
 import com.hafidh.utshafidhsyahputra.fragment.UTSFragment
 
 class MainActivity : AppCompatActivity() {
+
+    // mengimport fragment home,profile,uts
     val fragmentHome: Fragment = HomeFragment()
     val fragmentProfile: Fragment = ProfileFragment()
     val fragmentUts: Fragment = UTSFragment()
+    //
+
     val fm: FragmentManager = supportFragmentManager
     var active: Fragment = HomeFragment()
 
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // menginisialisasi button navigation
         buttonNav()
     }
 
@@ -39,9 +44,10 @@ class MainActivity : AppCompatActivity() {
 
         buttonNavigationView = binding.navView
         menu = buttonNavigationView.menu
+        // saat start awal akan muncul fragment home
         menuItem = menu.getItem(0)
         menuItem.isChecked = true
-
+        // mengatur button navigation
         buttonNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
@@ -58,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // mengatur fragment
     private fun callBackFragment(index: Int, fragment: Fragment) {
         menuItem = menu.getItem(index)
         menuItem.isChecked = true
